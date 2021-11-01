@@ -14,9 +14,11 @@ app.use((req, res, next) => {
     next();
 });
 
+app.use(express.json());
+
 app.get('/', (req, res) => res.send('Hello!'));
 
-app.post('/users', bodyPasser.json(), async(req, res) => {
+app.post('/users', async(req, res) => {
     const ctx  = new Context();
     const { name, email, password } = req.body;
 
